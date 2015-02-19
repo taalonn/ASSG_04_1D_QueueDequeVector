@@ -8,7 +8,6 @@
 #ifndef MyDeque_H_
 #define MyDeque_H_
 
-
 #include <iostream>
 using namespace std;
 
@@ -45,7 +44,14 @@ public:
 	T front() const;
 	//returns the current size of the linked-list
 	int  size() const;
-
+	//Add element at the end
+	void push_back(T data);
+	//Delete last element
+	void pop_back();
+	//Return iterator to beginning of the list
+	T* begin() const;
+	//Return iterator to the end of the list
+	T* end() const;
 //WRAPPERS///////////////////////////////////////////////////////////////////
 
 	//wrapper for enqueue Queue method
@@ -58,6 +64,7 @@ private:
 	node<T> *head;		//holding the head of the deque
 	node<T> *tail;		//holding the tail of the deque
 	int dequeSize;		//holding the total number of nodes in the deque
+	node<T> *iterator;	//holding the pointer to itorate through the list
 };//end - class MyDeque
 
 //METHOD DEFINITIONS/////////////////////////////////////////////////////////
@@ -69,6 +76,7 @@ MyDeque<T>::MyDeque()
 	head = NULL;
 	tail = NULL;
 	dequeSize = 0;
+	iterator = NULL;
 }//end - default construstor
 
 //default destructor
@@ -220,5 +228,56 @@ T MyDeque<T>::front() const
 	}
 
 }//end - front
+
+//Add element at the end
+template<typename T>
+void MyDeque<T>::push_back(T data)
+{
+	insertBack(data);
+}//end - push_back
+
+//Delete last element
+template<typename T>
+void MyDeque<T>::pop_back()
+{
+	if(empty())
+	{
+		cout << "Nothing on the list to pop_ back\n\n";
+
+	}
+	else
+	{
+		if(head == tail)
+		{
+			delete head;
+			head = NULL;
+			tail = NULL;
+		}
+		else
+		{
+			node<T> *holdPtr = tail->back;
+			delete tail;
+			tail = holdPtr;
+			holdPtr->next = NULL;
+		}
+	}
+
+}//end - pop_back
+
+//Return iterator to beginning of the list
+template<typename T>
+T* MyDeque<T>::begin() const
+{
+	node<T> *headPtr = head;
+	return headPtr;
+}//end - begin
+
+//Return iterator to the end of the list
+template<typename T>
+T* MyDeque<T>::end() const
+{
+	node<T> *tailPtr = tail;
+	return tailPtr;
+}//end - end
 
 #endif /* MyDeque_H_ */

@@ -7,7 +7,6 @@
 **************************************************************************/
 
 #include "header.h"
-
 int main()
 {
     string string1 = "A man, a plan, a canal, Panama";
@@ -17,7 +16,7 @@ int main()
 
 	MyDeque<string> dequeTest;
 
-	cout << "Part 1) Pushing the strings\n\n";
+	cout << "Part 1) Using wrappers! Pushing the strings\n\n";
 
 	dequeTest.enqueue(string1);
 	dequeTest.enqueue(string2);
@@ -80,6 +79,61 @@ int main()
 
 	cout << "Size: " << dequeTest.size() << endl;
 	cout << "Front: " << dequeTest.front() << endl;
+
+	cout << "Part 2, option 2: Implementing a vector ADT using doubly linked "
+			"list" << endl << endl;
+
+	cout << "Using the previous doubly linked list class to make my "
+			"vector ADT" << endl;
+
+	MyDeque<int> myVector;
+
+	cout << "Pushing 50, 60, 40, 10, 90, 30" << endl;
+	myVector.push_back(50);
+	cout << "Contents: \n";
+	myVector.print();
+	myVector.push_back(60);
+	cout << "Contents: \n";
+	myVector.print();
+	myVector.push_back(40);
+	cout << "Contents: \n";
+	myVector.print();
+	myVector.push_back(10);
+	cout << "Contents: \n";
+	myVector.print();
+	myVector.push_back(90);
+	cout << "Contents: \n";
+	myVector.print();
+	myVector.push_back(30);
+	cout << "Contents: \n";
+	myVector.print();
+
+
+	cout << endl << "Popping the list of all it's elements" << endl << endl;
+
+	myVector.pop_back();
+	cout << "Contents: \n";
+	myVector.print();
+
+	myVector.pop_back();
+	cout << "Contents: \n";
+	myVector.print();
+
+	myVector.pop_back();
+	cout << "Contents: \n";
+	myVector.print();
+
+	myVector.pop_back();
+	cout << "Contents: \n";
+	myVector.print();
+
+	myVector.pop_back();
+	cout << "Contents: \n";
+	myVector.print();
+
+	myVector.pop_back();
+	cout << "Contents: \n";
+	myVector.print();
 
 	return 0;
 }
